@@ -1,0 +1,159 @@
+
+;; Function sizeof_uint32_t (sizeof_uint32_t, funcdef_no=11, decl_uid=3286, cgraph_uid=12, symbol_order=11)
+
+size_t sizeof_uint32_t (const uint32_t * D.3285)
+{
+  <bb 2> :
+  return 4;
+
+}
+
+
+
+;; Function sizeof_simple_pointer (sizeof_simple_pointer, funcdef_no=12, decl_uid=3289, cgraph_uid=13, symbol_order=12)
+
+size_t sizeof_simple_pointer (const void * D.3288)
+{
+  <bb 2> :
+  return 8;
+
+}
+
+
+
+;; Function sizeof_B_self (sizeof_B_self, funcdef_no=13, decl_uid=3292, cgraph_uid=14, symbol_order=13)
+
+  Deleted trivially dead stmt: _1 = &val_2(D)->dummy;
+
+size_t sizeof_B_self (const struct B * val)
+{
+  size_t D.3344;
+
+  <bb 2> :
+  return 4;
+
+}
+
+
+
+;; Function sizeof_pnext (sizeof_pnext, funcdef_no=14, decl_uid=3295, cgraph_uid=15, symbol_order=14)
+
+  Deleted trivially dead stmt: size_22 = _21 + 12;
+
+  Deleted trivially dead stmt: _3 = &pnext_2->sType;
+
+__attribute__((noinline))
+size_t sizeof_pnext (const void * val)
+{
+  size_t D.3353;
+  size_t D.3351;
+  size_t D.3349;
+  size_t D.3347;
+  size_t size;
+  const struct ChainBase * pnext;
+  unsigned int _1;
+  const void * _4;
+  size_t _6;
+  long unsigned int _21;
+
+  <bb 2> :
+  goto <bb 6>; [INV]
+
+  <bb 3> :
+  _1 = pnext_5->sType;
+  if (_1 == 13)
+    goto <bb 4>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 4> :
+  # pnext_2 = PHI <pnext_5(3)>
+  _4 = pnext_2->pNext;
+  _21 = sizeof_pnext (_4);
+  size_25 = _21 + 16;
+  goto <bb 7>; [INV]
+
+  <bb 5> :
+  pnext_27 = pnext_5->pNext;
+
+  <bb 6> :
+  # pnext_5 = PHI <val_8(D)(2), pnext_27(5)>
+  if (pnext_5 != 0B)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 7>; [INV]
+
+  <bb 7> :
+  # _6 = PHI <size_25(4), 8(6)>
+  return _6;
+
+}
+
+
+
+;; Function sizeof_A (sizeof_A, funcdef_no=15, decl_uid=3306, cgraph_uid=16, symbol_order=15)
+
+  Deleted trivially dead stmt: _3 = &val_5(D)->dummy;
+
+  Deleted trivially dead stmt: size_12 = _11 + 4;
+
+  Deleted trivially dead stmt: _1 = &val_5(D)->sType;
+
+__attribute__((noinline))
+size_t sizeof_A (const struct A * val)
+{
+  size_t D.3358;
+  size_t D.3356;
+  size_t size;
+  const void * _2;
+  long unsigned int _11;
+
+  <bb 2> :
+  _2 = val_5(D)->pNext;
+  _11 = sizeof_pnext (_2);
+  size_15 = _11 + 8;
+  return size_15;
+
+}
+
+
+
+;; Function main (main, funcdef_no=16, decl_uid=3310, cgraph_uid=17, symbol_order=16)
+
+ipa-modref: call stmt _1 = sizeof_A (&a);
+ipa-modref: call to sizeof_A/15 does not use ref: a.dummy alias sets: 5->2
+  Deleted dead store: a.dummy = 11;
+
+ipa-modref: call stmt _1 = sizeof_A (&a);
+ipa-modref: call to sizeof_A/15 does not use ref: a.sType alias sets: 5->2
+  Deleted dead store: a.sType = 7;
+
+ipa-modref: call stmt _1 = sizeof_A (&a);
+ipa-modref: call to sizeof_A/15 does not use ref: b.dummy alias sets: 6->2
+  Deleted dead store: b.dummy = 47;
+
+ipa-modref: call stmt _1 = sizeof_A (&a);
+ipa-modref: call to sizeof_A/15 does not use ref: b.pNext alias sets: 6->4
+  Deleted dead store: b.pNext = 0B;
+
+ipa-modref: call stmt _1 = sizeof_A (&a);
+ipa-modref: call to sizeof_A/15 does not use ref: b.sType alias sets: 6->2
+  Deleted dead store: b.sType = 13;
+
+int main ()
+{
+  const struct A a;
+  const struct B b;
+  long unsigned int _1;
+
+  <bb 2> :
+  a.pNext = &b;
+  _1 = sizeof_A (&a);
+  printf ("sizeof_A=%zu\n", _1);
+  b ={v} {CLOBBER(eos)};
+  a ={v} {CLOBBER(eos)};
+  return 0;
+
+}
+
+

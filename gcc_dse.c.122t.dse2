@@ -1,0 +1,93 @@
+
+;; Function sizeof_pnext (sizeof_pnext, funcdef_no=14, decl_uid=3295, cgraph_uid=15, symbol_order=14) (executed once)
+
+__attribute__((noinline))
+size_t sizeof_pnext (const void * val)
+{
+  const struct ChainBase * pnext;
+  unsigned int _1;
+  const void * _3;
+  long unsigned int acc_tmp_7;
+  long unsigned int add_acc_8;
+  long unsigned int add_acc_9;
+  long unsigned int add_acc_12;
+
+  <bb 2> [local count: 59055799]:
+
+  <bb 3> [local count: 114863530]:
+  # val_5 = PHI <val_2(D)(2), _3(5)>
+  # add_acc_8 = PHI <0(2), add_acc_9(5)>
+  goto <bb 7>; [100.00%]
+
+  <bb 4> [local count: 1014686024]:
+  _1 = pnext_4->sType;
+  if (_1 == 13)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 6>; [94.50%]
+
+  <bb 5> [local count: 55807731]:
+  # pnext_11 = PHI <pnext_4(4)>
+  _3 = pnext_11->pNext;
+  add_acc_9 = add_acc_8 + 16;
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 958878293]:
+  pnext_10 = pnext_4->pNext;
+
+  <bb 7> [local count: 1073741824]:
+  # pnext_4 = PHI <val_5(3), pnext_10(6)>
+  if (pnext_4 != 0B)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 8>; [5.50%]
+
+  <bb 8> [local count: 59055800]:
+  # add_acc_12 = PHI <add_acc_8(7)>
+  acc_tmp_7 = add_acc_12 + 8;
+  return acc_tmp_7;
+
+}
+
+
+
+;; Function sizeof_A.isra (sizeof_A.isra.0, funcdef_no=17, decl_uid=3361, cgraph_uid=23, symbol_order=22) (executed once)
+
+__attribute__((noinline))
+size_t sizeof_A.isra (const void * const ISRA.15)
+{
+  size_t size;
+  const struct A * val;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  _2 = sizeof_pnext (ISRA.15_4(D));
+  size_3 = _2 + 8;
+  return size_3;
+
+}
+
+
+
+;; Function main (main, funcdef_no=16, decl_uid=3310, cgraph_uid=17, symbol_order=16) (executed once)
+
+ipa-modref: call stmt _1 = sizeof_A.isra (&b);
+ipa-modref: call to sizeof_A.isra/22 does not use ref: a.pNext alias sets: 5->4
+  Deleted dead store: a.pNext = &b;
+
+int main ()
+{
+  const struct A a;
+  const struct B b;
+  long unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = sizeof_A.isra (&b);
+  printf ("sizeof_A=%zu\n", _1);
+  b ={v} {CLOBBER(eos)};
+  a ={v} {CLOBBER(eos)};
+  return 0;
+
+}
+
+

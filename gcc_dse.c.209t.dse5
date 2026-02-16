@@ -1,0 +1,83 @@
+
+;; Function sizeof_pnext (sizeof_pnext, funcdef_no=14, decl_uid=3295, cgraph_uid=15, symbol_order=14) (executed once)
+
+__attribute__((noinline))
+size_t sizeof_pnext (const void * val)
+{
+  long unsigned int ivtmp.11;
+  const struct ChainBase * pnext;
+  unsigned int _1;
+  const void * pretmp_4;
+  long unsigned int acc_tmp_7;
+
+  <bb 2> [local count: 59055799]:
+
+  <bb 3> [local count: 114863530]:
+  # val_5 = PHI <val_2(D)(2), pretmp_4(5)>
+  # ivtmp.11_14 = PHI <0(2), ivtmp.11_15(5)>
+  if (val_5 != 0B)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 4> [local count: 1014686024]:
+  # pnext_11 = PHI <pretmp_4(6), val_5(3)>
+  _1 = pnext_11->sType;
+  pretmp_4 = pnext_11->pNext;
+  if (_1 == 13)
+    goto <bb 5>; [5.50%]
+  else
+    goto <bb 6>; [94.50%]
+
+  <bb 5> [local count: 55807731]:
+  ivtmp.11_15 = ivtmp.11_14 + 16;
+  goto <bb 3>; [100.00%]
+
+  <bb 6> [local count: 958878294]:
+  if (pretmp_4 != 0B)
+    goto <bb 4>; [94.50%]
+  else
+    goto <bb 7>; [5.50%]
+
+  <bb 7> [local count: 59055800]:
+  # ivtmp.11_13 = PHI <ivtmp.11_14(6), ivtmp.11_14(3)>
+  acc_tmp_7 = ivtmp.11_13 + 8;
+  return acc_tmp_7;
+
+}
+
+
+
+;; Function sizeof_A.isra (sizeof_A.isra.0, funcdef_no=17, decl_uid=3361, cgraph_uid=23, symbol_order=22) (executed once)
+
+__attribute__((noinline))
+size_t sizeof_A.isra (const void * const ISRA.15)
+{
+  size_t size;
+  long unsigned int _2;
+
+  <bb 2> [local count: 1073741824]:
+  _2 = sizeof_pnext (ISRA.15_4(D));
+  size_3 = _2 + 8;
+  return size_3;
+
+}
+
+
+
+;; Function main (main, funcdef_no=16, decl_uid=3310, cgraph_uid=17, symbol_order=16) (executed once)
+
+int main ()
+{
+  const struct B b;
+  long unsigned int _1;
+
+  <bb 2> [local count: 1073741824]:
+  _1 = sizeof_A.isra (&b);
+  printf ("sizeof_A=%zu\n", _1);
+  b ={v} {CLOBBER(eos)};
+  return 0;
+
+}
+
+
