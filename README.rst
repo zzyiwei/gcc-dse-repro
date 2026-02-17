@@ -1,5 +1,7 @@
 The bug exists in all recent GCC releases, and is worse in GCC-15.
 
+- NOT A GCC BUG...This turns out to be an indeed violation of strict aliasing rule. See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=124148 for details.
+
 Below is an example with Debian stock GCC-14:
 
 .. code-block:: sh
